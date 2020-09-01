@@ -16,7 +16,7 @@ public interface UsersMapper {
     @Select("SELECT * FROM users")
     List<User> findAll();
 
-    @Select("SELECT * FROM users WHERE users.userid = #{id}")
+    @Select("SELECT * FROM users WHERE users.userId = #{id}")
     User findById(Long id);
 
     @Select("SELECT * FROM users WHERE users.username = #{username}")

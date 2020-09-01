@@ -13,18 +13,18 @@ public interface FilesMapper {
     @Select("SELECT * FROM files")
     List<File> findAll();
 
-    @Select("SELECT * FROM files WHERE userid = #{userId}")
+    @Select("SELECT * FROM files WHERE userId = #{userId}")
     List<File> findByUserId(Long userId);
 
-    @Select("SELECT * FROM files WHERE fileid = #{id} AND userid = #{userid}")
+    @Select("SELECT * FROM files WHERE fileid = #{id} AND userId = #{userId}")
     File findById(Long id, Long userId);
 
-    @Insert("INSERT INTO files (filename, contenttype, filesize, filedata, userid) VALUES (#{file.fileName}, #{file.contentType}, #{file.fileSize}, #{file.fileData}, #{userId})")
+    @Insert("INSERT INTO files (filename, contenttype, filesize, filedata, userId) VALUES (#{file.fileName}, #{file.contentType}, #{file.fileSize}, #{file.fileData}, #{userId})")
     Integer create(@Param("file") File file, Long userId);
 
-    @Update("UPDATE files SET filename = #{file.fileName}, contenttype = #{file.contentType}, filesize = #{file.fileSize}, filedata = #{file.fileData} WHERE fileid = #{file.fileId} AND userid = #{userid}")
+    @Update("UPDATE files SET filename = #{file.fileName}, contenttype = #{file.contentType}, filesize = #{file.fileSize}, filedata = #{file.fileData} WHERE fileid = #{file.fileId} AND userId = #{userId}")
     Integer update(@Param("file") File file, Long userId);
 
-    @Delete("DELETE FROM files WHERE fileId = #{id} AND userid = #{userId}")
+    @Delete("DELETE FROM files WHERE fileId = #{id} AND userId = #{userId}")
     Integer delete(Long id, Long userId);
 }
